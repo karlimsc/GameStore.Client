@@ -21074,6 +21074,11 @@
       "FilePath": "/Users/bgnovus/Desktop/BlazorSolution/GameStore.Client/Shared/NavMenu.razor",
       "TargetPath": "Shared\\NavMenu.razor",
       "FileKind": "component"
+    },
+    {
+      "FilePath": "/Users/bgnovus/Desktop/BlazorSolution/GameStore.Client/Pages/EditGame.razor",
+      "TargetPath": "Pages\\EditGame.razor",
+      "FileKind": "component"
     }
   ]
 }

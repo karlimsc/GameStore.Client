@@ -87,7 +87,7 @@
         }
       },
       {
-        "HashCode": 1529975725,
+        "HashCode": -1160257356,
         "Kind": "Components.Component",
         "Name": "GameStore.Client.Pages.EditGame",
         "AssemblyName": "GameStore.Client",
@@ -98,6 +98,18 @@
             "TagName": "EditGame"
           }
         ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Id",
+            "TypeName": "System.Int32?",
+            "DisplayName": "System.Int32? GameStore.Client.Pages.EditGame.Id",
+            "Metadata": {
+              "Common.PropertyName": "Id",
+              "Common.GloballyQualifiedTypeName": "global::System.Int32?"
+            }
+          }
+        ],
         "Metadata": {
           "Common.TypeName": "GameStore.Client.Pages.EditGame",
           "Common.TypeNameIdentifier": "EditGame",
@@ -106,7 +118,7 @@
         }
       },
       {
-        "HashCode": 1247544852,
+        "HashCode": 916352925,
         "Kind": "Components.Component",
         "Name": "GameStore.Client.Pages.EditGame",
         "AssemblyName": "GameStore.Client",
@@ -115,6 +127,18 @@
         "TagMatchingRules": [
           {
             "TagName": "GameStore.Client.Pages.EditGame"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Id",
+            "TypeName": "System.Int32?",
+            "DisplayName": "System.Int32? GameStore.Client.Pages.EditGame.Id",
+            "Metadata": {
+              "Common.PropertyName": "Id",
+              "Common.GloballyQualifiedTypeName": "global::System.Int32?"
+            }
           }
         ],
         "Metadata": {

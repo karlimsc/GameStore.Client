@@ -40,6 +40,21 @@ public static class GameClient
         games.Add(game);
     }
 
+    public static Game GetGame(int id){
+        return games.Find(game => game.Id == id) ??
+         throw new Exception("Could not find game!");
+    }
+
+    public static void UpdateGame(Game updatedGame){
+        
+        Game existingGame = GetGame(updatedGame.Id);
+        existingGame.Name = updatedGame.Name;
+        existingGame.Genre = updatedGame.Genre;
+        existingGame.Price = updatedGame.Price;
+        existingGame.RealeaseDate = updatedGame.RealeaseDate;
+
+    }
+
 };
 
 

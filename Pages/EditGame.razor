@@ -1,4 +1,5 @@
 ﻿@page "/game"
+@page "/game/{id:int}"
 @using Models
 @inject NavigationManager NavigationManager
 
@@ -6,9 +7,17 @@
 <h1> Game Catalog</h1>
 <h3>New Game</h3>
 
-<div class="row">
+@if (game is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+
+    <div class="row">
     <div class="col-sm-4">
-        <EditForm Model="@game" OnSubmit="HandleSubmit">
+        <EditForm Model="@game" OnValidSubmit="HandleSubmit">
+
             @* marginbottom3 *@
             <div class="mb-3">
                 <label for="name" class="form-label"> Name:</label>
@@ -32,24 +41,73 @@
                 <label for="realeseDate" class="form-label"> Release Date:</label>
                 <InputDate id="realeseDate" @bind-Value="game.RealeaseDate" class="form-control"></InputDate>
             </div>
-            <button type="submit" class="btn btn-primary">Save</button>
-            <button type="button" class="btn btn-secondary" @onclick="Cancel">Cancel</button>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary" @onclick="Cancel">Cancel</button>
+            </div>
+
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
         </EditForm>
     </div>
 </div>
 
-@code {
-    private Game game = new()
-        {
-            Name = string.Empty,
-            Genre = string.Empty,
-            RealeaseDate = DateTime.UtcNow
+}
 
-        };
+@code {
+
+    [Parameter]
+    public int? Id { get; set; }
+    private Game? game;
+    @* {
+Name = string.Empty,
+Genre = string.Empty,
+RealeaseDate = DateTime.UtcNow
+
+}; *@
+
+    protected override void OnParametersSet()
+    {
+        if (Id is not null)
+        {
+
+            Game foundGame = GameClient.GetGame(Id.Value);
+
+            game = new()
+                {
+                    Id = foundGame.Id,
+                    Name = foundGame.Name,
+                    Genre = foundGame.Genre,
+                    Price = foundGame.Price,
+                    RealeaseDate = foundGame.RealeaseDate
+                };
+
+        }
+        else
+        {
+            game = new()
+                {
+                    Name = string.Empty,
+                    Genre = string.Empty,
+                    RealeaseDate = DateTime.UtcNow
+
+                };
+
+        }
+    }
 
     private void HandleSubmit()
     {
-        GameClient.AddGame(game);
+        if (game!.Id == 0)
+        {
+            GameClient.AddGame(game);
+        }
+        else
+        {
+            GameClient.UpdateGame(game);
+        }
+
         NavigationManager.NavigateTo("/");
     }
 

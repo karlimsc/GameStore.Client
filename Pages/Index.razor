@@ -1,9 +1,16 @@
 ﻿@page "/"
 @using Models
+@inject NavigationManager NavigationManager
 
 <PageTitle>Game Catalog</PageTitle>
 
 <h1>Game Catalog</h1>
+
+<div class="row mb-4">
+    <div class="col-sm-6">
+        <button type="button" class="btn btn-primary" @onclick="CreateGame"> New Game</button>
+    </div>
+</div>
 
 @if (games is null)
 {
@@ -19,7 +26,7 @@ else
         <th>Genre</th>
         <th>Price</th>
         <th>Release Date</th>
-        <th></th>
+
     </thead>
     <tbody>
         @foreach (var game in games)
@@ -29,7 +36,7 @@ else
                     <td>@game.Name</td>
                     <td>@game.Genre</td>
                     <td>@game.Price</td>
-                    <td>@game.RealeaseDate.ToString("MM,dd/yy")</td>
+                    <td>@game.RealeaseDate.ToString("MM/dd/yy")</td>
                 </tr>
             }
         </tbody>
@@ -44,6 +51,12 @@ else
     {
         games = GameClient.GetGames();
     }
+
+    private void CreateGame()
+    {
+        NavigationManager.NavigateTo("/game");
+    }
+
 
 }
 

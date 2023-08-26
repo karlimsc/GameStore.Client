@@ -1,9 +1,9 @@
 using GameStore.Client.Models;
 
 namespace GameStore.Client;
-    public static class GameClient
-    {
-        public static readonly List<Game> games = new()
+public static class GameClient
+{
+    public static readonly List<Game> games = new()
         {
             new Game(){
                 Id = 1,
@@ -29,12 +29,19 @@ namespace GameStore.Client;
             }
         };
 
-        public static Game[] GetGames(){
-            return games.ToArray();
-        }
+    public static Game[] GetGames()
+    {
+        return games.ToArray();
+    }
 
-    };
+    public static void AddGame(Game game)
+    {
+        game.Id = games.Max(game => game.Id) + 1;
+        games.Add(game);
+    }
 
-   
+};
 
-    
+
+
+

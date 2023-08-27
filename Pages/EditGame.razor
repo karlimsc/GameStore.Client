@@ -3,9 +3,9 @@
 @using Models
 @inject NavigationManager NavigationManager
 
-<PageTitle> New Game</PageTitle>
+<PageTitle>@title</PageTitle>
 <h1> Game Catalog</h1>
-<h3>New Game</h3>
+<h3>@title</h3>
 
 @if (game is null)
 {
@@ -60,6 +60,7 @@ else
     [Parameter]
     public int? Id { get; set; }
     private Game? game;
+
     @* {
 Name = string.Empty,
 Genre = string.Empty,
@@ -67,34 +68,56 @@ RealeaseDate = DateTime.UtcNow
 
 }; *@
 
+    private string title = "New Game";
+
     protected override void OnParametersSet()
     {
-        if (Id is not null)
+        try
         {
 
-            Game foundGame = GameClient.GetGame(Id.Value);
+            if (Id is not null)
+            {
 
-            game = new()
+
+                Game foundGame = GameClient.GetGame(Id.Value);
+                if (foundGame is null)
                 {
-                    Id = foundGame.Id,
-                    Name = foundGame.Name,
-                    Genre = foundGame.Genre,
-                    Price = foundGame.Price,
-                    RealeaseDate = foundGame.RealeaseDate
+                    NavigationManager.NavigateTo("/error");
+                }
+                else
+                {
+                    game = new()
+                        {
+                            Id = foundGame.Id,
+                            Name = foundGame.Name,
+                            Genre = foundGame.Genre,
+                            Price = foundGame.Price,
+                            RealeaseDate = foundGame.RealeaseDate
+                        };
+
+                    title = $"Edit : {game.Name}";
                 };
 
+
+            }
+            else
+            {
+                game = new()
+                    {
+                        Name = string.Empty,
+                        Genre = string.Empty,
+                        RealeaseDate = DateTime.UtcNow
+
+                    };
+
+            }
         }
-        else
+        catch (Exception)
         {
-            game = new()
-                {
-                    Name = string.Empty,
-                    Genre = string.Empty,
-                    RealeaseDate = DateTime.UtcNow
-
-                };
-
+            NavigationManager.NavigateTo("/error");
         }
+
+
     }
 
     private void HandleSubmit()

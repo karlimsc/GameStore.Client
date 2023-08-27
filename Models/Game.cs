@@ -6,14 +6,14 @@ namespace GameStore.Client.Models
     {
         public int Id { get; set; }
         [Required]
-        [StringLength(50)]
+        [StringLength(10)]
         public required string Name { get; set; }
-        
+
         [Required]
         [StringLength(20)]
         public required string Genre { get; set; }
 
-        [Range(1,200)]
+        [Range(1, 200)]
         public decimal Price { get; set; }
         public DateTime RealeaseDate { get; set; }
 

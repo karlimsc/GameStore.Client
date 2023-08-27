@@ -55,6 +55,13 @@ public static class GameClient
 
     }
 
+    public static void DeleteGame(int id){
+        
+        Game gameSelected = GetGame(id);
+        games.Remove(gameSelected);
+
+    }
+
 };
 
 

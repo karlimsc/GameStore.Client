@@ -19,13 +19,14 @@
 else
 {
 
-    <table class="table table-striped table-bordered table-hover">
+    <table class="table table-bordered table-hover">
     <thead class="table-dark">
         <th>Id</th>
         <th>Name</th>
         <th>Genre</th>
         <th>Price</th>
         <th>Release Date</th>
+        <th>Actions</th>
 
     </thead>
     <tbody>
@@ -37,6 +38,15 @@ else
                     <td>@game.Genre</td>
                     <td>@game.Price</td>
                     <td>@game.RealeaseDate.ToString("MM/dd/yy")</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" @onclick="(() => EditGame(game.Id))">
+                            <i class="oi oi-pencil"></i>
+                        </button>
+                        <button type="button" class="btn btn-primary" @onclick="(() => EditGame(game.Id))">
+                            <i class="oi oi-trash"></i>
+                        </button>
+                    </td>
+
                 </tr>
             }
         </tbody>
@@ -55,6 +65,13 @@ else
     private void CreateGame()
     {
         NavigationManager.NavigateTo("/game");
+    }
+
+    private void EditGame(int id)
+    {
+
+        NavigationManager.NavigateTo($"/game/{id}");
+
     }
 
 

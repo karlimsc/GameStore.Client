@@ -18,15 +18,18 @@
 }
 else
 {
+    <DeleteGame game="currentGame" OnClose="OnDeleteModalClose"></DeleteGame>
 
-    <table class="table table-bordered table-hover">
-    <thead class="table-dark">
-        <th>Id</th>
-        <th>Name</th>
-        <th>Genre</th>
-        <th>Price</th>
-        <th>Release Date</th>
-        <th>Actions</th>
+    <table class="table table-row-dashed align-middle gs-0 gy-4 my-0">
+    <thead>
+        <tr class="fs-7 fw-bold text-gray-500 border-bottom-0">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Genre</th>
+            <th>Price</th>
+            <th>Release Date</th>
+            <th>Actions</th>
+        </tr>
 
     </thead>
     <tbody>
@@ -42,7 +45,9 @@ else
                         <button type="button" class="btn btn-primary" @onclick="(() => EditGame(game.Id))">
                             <i class="oi oi-pencil"></i>
                         </button>
-                        <button type="button" class="btn btn-primary" @onclick="(() => EditGame(game.Id))">
+
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                        @onclick="(()=> currentGame = game)">
                             <i class="oi oi-trash"></i>
                         </button>
                     </td>
@@ -56,6 +61,8 @@ else
 
 @code {
     private Game[]? games;
+
+    private Game? currentGame;
 
     protected override void OnInitialized()
     {
@@ -74,6 +81,14 @@ else
 
     }
 
+    private void OnDeleteModalClose(bool accepted)
+    {
+        if (accepted)
+        {
+            GameClient.DeleteGame(currentGame!.Id);
+            games = GameClient.GetGames();
+        }
+    }
 
 }
 

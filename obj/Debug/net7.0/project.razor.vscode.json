@@ -267,6 +267,91 @@
         }
       },
       {
+        "HashCode": 1992550208,
+        "Kind": "Components.Component",
+        "Name": "GameStore.Client.Pages.DeleteGame",
+        "AssemblyName": "GameStore.Client",
+        "DisplayName": "GameStore.Client.Pages.DeleteGame",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "DeleteGame"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "game",
+            "TypeName": "GameStore.Client.Models.Game",
+            "DisplayName": "GameStore.Client.Models.Game GameStore.Client.Pages.DeleteGame.game",
+            "Metadata": {
+              "Common.PropertyName": "game",
+              "Common.GloballyQualifiedTypeName": "global::GameStore.Client.Models.Game"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "OnClose",
+            "TypeName": "Microsoft.AspNetCore.Components.EventCallback<System.Boolean>",
+            "DisplayName": "Microsoft.AspNetCore.Components.EventCallback<System.Boolean> GameStore.Client.Pages.DeleteGame.OnClose",
+            "Metadata": {
+              "Common.PropertyName": "OnClose",
+              "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.EventCallback<global::System.Boolean>",
+              "Components.EventCallback": "True"
+            }
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "GameStore.Client.Pages.DeleteGame",
+          "Common.TypeNameIdentifier": "DeleteGame",
+          "Common.TypeNamespace": "GameStore.Client.Pages",
+          "Runtime.Name": "Components.IComponent"
+        }
+      },
+      {
+        "HashCode": -1625503800,
+        "Kind": "Components.Component",
+        "Name": "GameStore.Client.Pages.DeleteGame",
+        "AssemblyName": "GameStore.Client",
+        "DisplayName": "GameStore.Client.Pages.DeleteGame",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "GameStore.Client.Pages.DeleteGame"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "game",
+            "TypeName": "GameStore.Client.Models.Game",
+            "DisplayName": "GameStore.Client.Models.Game GameStore.Client.Pages.DeleteGame.game",
+            "Metadata": {
+              "Common.PropertyName": "game",
+              "Common.GloballyQualifiedTypeName": "global::GameStore.Client.Models.Game"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "OnClose",
+            "TypeName": "Microsoft.AspNetCore.Components.EventCallback<System.Boolean>",
+            "DisplayName": "Microsoft.AspNetCore.Components.EventCallback<System.Boolean> GameStore.Client.Pages.DeleteGame.OnClose",
+            "Metadata": {
+              "Common.PropertyName": "OnClose",
+              "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.EventCallback<global::System.Boolean>",
+              "Components.EventCallback": "True"
+            }
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "GameStore.Client.Pages.DeleteGame",
+          "Common.TypeNameIdentifier": "DeleteGame",
+          "Common.TypeNamespace": "GameStore.Client.Pages",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
+          "Runtime.Name": "Components.IComponent"
+        }
+      },
+      {
         "HashCode": -1627848592,
         "Kind": "Components.Component",
         "Name": "GameStore.Client.Shared.SurveyPrompt",
@@ -20815,6 +20900,11 @@
     {
       "FilePath": "/Users/bgnovus/Desktop/BlazorSolution/GameStore.Client/Shared/NavMenu.razor",
       "TargetPath": "Shared\\NavMenu.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/Users/bgnovus/Desktop/BlazorSolution/GameStore.Client/Pages/DeleteGame.razor",
+      "TargetPath": "Pages\\DeleteGame.razor",
       "FileKind": "component"
     }
   ]

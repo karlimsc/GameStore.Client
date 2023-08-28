@@ -3,9 +3,12 @@
 @using Models
 @inject NavigationManager NavigationManager
 
-<PageTitle>@title</PageTitle>
-<h1> Game Catalog</h1>
-<h3>@title</h3>
+
+<div class="card">
+    <PageTitle>@title</PageTitle>
+    <h1> Game Catalog</h1>
+    <h3>@title</h3>
+</div>
 
 @if (game is null)
 {
@@ -14,42 +17,44 @@
 else
 {
 
+    <div class="card">
     <div class="row">
-    <div class="col-sm-4">
-        <EditForm Model="@game" OnValidSubmit="HandleSubmit">
+        <div class="col-sm-4">
+            <EditForm Model="@game" OnValidSubmit="HandleSubmit">
 
-            @* marginbottom3 *@
-            <div class="mb-3">
-                <label for="name" class="form-label"> Name:</label>
-                <InputText id="name" @bind-Value="game.Name" class="form-control"></InputText>
-            </div>
-            <div class="mb-3">
-                <label for="genre" class="form-label"> Genre:</label>
-                <InputSelect id="genre" @bind-Value="game.Genre" class="form-select">
-                    <option value="">Select</option>
-                    <option value="Fighting">Fighting</option>
-                    <option value="Sports">Sports</option>
-                    <option value="Racing">Racing</option>
-                    <option value="Roleplaying">Roleplaying</option>
-                </InputSelect>
-            </div>
-            <div class="mb-3">
-                <label for="price" class="form-label"> Price:</label>
-                <InputNumber id="price" @bind-Value="game.Price" class="form-control"></InputNumber>
-            </div>
-            <div class="mb-3">
-                <label for="realeseDate" class="form-label"> Release Date:</label>
-                <InputDate id="realeseDate" @bind-Value="game.RealeaseDate" class="form-control"></InputDate>
-            </div>
-            <div class="mb-3">
-                <button type="submit" class="btn btn-primary">Save</button>
-                <button type="button" class="btn btn-secondary" @onclick="Cancel">Cancel</button>
-            </div>
+                @* marginbottom3 *@
+                <div class="mb-3">
+                    <label for="name" class="form-label"> Name:</label>
+                    <InputText id="name" @bind-Value="game.Name" class="form-control"></InputText>
+                </div>
+                <div class="mb-3">
+                    <label for="genre" class="form-label"> Genre:</label>
+                    <InputSelect id="genre" @bind-Value="game.Genre" class="form-select">
+                        <option value="">Select</option>
+                        <option value="Fighting">Fighting</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Racing">Racing</option>
+                        <option value="Roleplaying">Roleplaying</option>
+                    </InputSelect>
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label"> Price:</label>
+                    <InputNumber id="price" @bind-Value="game.Price" class="form-control"></InputNumber>
+                </div>
+                <div class="mb-3">
+                    <label for="realeseDate" class="form-label"> Release Date:</label>
+                    <InputDate id="realeseDate" @bind-Value="game.RealeaseDate" class="form-control"></InputDate>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary" @onclick="Cancel">Cancel</button>
+                </div>
 
-            <DataAnnotationsValidator />
-            <ValidationSummary />
+                <DataAnnotationsValidator />
+                <ValidationSummary />
 
-        </EditForm>
+            </EditForm>
+        </div>
     </div>
 </div>
 

@@ -2,14 +2,10 @@
 @using Models
 @inject NavigationManager NavigationManager
 
-<PageTitle>Game Catalog</PageTitle>
+<div class="card text-center card-custom">
+    <PageTitle>Game Catalog</PageTitle>
 
-<h1>Game Catalog</h1>
-
-<div class="row mb-4">
-    <div class="col-sm-6">
-        <button type="button" class="btn btn-primary" @onclick="CreateGame"> New Game</button>
-    </div>
+    <h1>Game Catalog</h1>
 </div>
 
 @if (games is null)
@@ -20,42 +16,50 @@ else
 {
     <DeleteGame game="currentGame" OnClose="OnDeleteModalClose"></DeleteGame>
 
-    <table class="table table-row-dashed align-middle gs-0 gy-4 my-0">
-    <thead>
-        <tr class="fs-7 fw-bold text-gray-500 border-bottom-0">
-            <th>Id</th>
-            <th>Name</th>
-            <th>Genre</th>
-            <th>Price</th>
-            <th>Release Date</th>
-            <th>Actions</th>
-        </tr>
-
-    </thead>
-    <tbody>
-        @foreach (var game in games)
-            {
-                <tr>
-                    <td>@game.Id</td>
-                    <td>@game.Name</td>
-                    <td>@game.Genre</td>
-                    <td>@game.Price</td>
-                    <td>@game.RealeaseDate.ToString("MM/dd/yy")</td>
-                    <td>
-                        <button type="button" class="btn btn-primary" @onclick="(() => EditGame(game.Id))">
-                            <i class="oi oi-pencil"></i>
-                        </button>
-
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                        @onclick="(()=> currentGame = game)">
-                            <i class="oi oi-trash"></i>
-                        </button>
-                    </td>
-
+    <div class="card card-custom">
+        <table class="table table-row-dashed align-middle gs-0 gy-4 my-0">
+            <thead>
+                <tr class="fs-7 fw-bold text-gray-500 border-bottom-0">
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Genre</th>
+                    <th>Price</th>
+                    <th>Release Date</th>
+                    <th>Actions</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+
+            </thead>
+            <tbody>
+                @foreach (var game in games)
+                    {
+                        <tr>
+                            <td>@game.Id</td>
+                            <td>@game.Name</td>
+                            <td>@game.Genre</td>
+                            <td>@game.Price</td>
+                            <td>@game.RealeaseDate.ToString("MM/dd/yy")</td>
+                            <td>
+                                <button type="button" class="btn btn-primary" @onclick="(() => EditGame(game.Id))">
+                                    <i class="oi oi-pencil"></i>
+                                </button>
+
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                @onclick="(()=> currentGame = game)">
+                                    <i class="oi oi-trash"></i>
+                                </button>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+        </table>
+
+        <div class="row mb-4 ml-8">
+            <div class="col-sm-12">
+                <button type="button" class="btn btn-primary" @onclick="CreateGame"> New Game</button>
+            </div>
+        </div>
+    </div>
 
 }
 
